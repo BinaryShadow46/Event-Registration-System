@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Event Registration System</title>
+    <meta name="description" content="Register for exciting events near you">
+    <meta name="theme-color" content="#4f46e5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
+</head>
+<body>
+    <!-- PWA Install Prompt -->
+    <div id="installPrompt" class="install-prompt">
+        <div class="install-content">
+            <p>📱 Install EventHub for better experience</p>
+            <button id="installBtn" class="btn-install">Install Now</button>
+            <button id="cancelInstall" class="btn-cancel">Later</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-calendar-alt"></i>
+                <span>EventHub</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#events">Events</a>
+                <a href="#register">Register</a>
+                <a href="#my-registrations">My Tickets</a>
+                <a href="admin.html" class="admin-link">
+                    <i class="fas fa-cog"></i> Admin
+                </a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Amazing Events</h1>
+            <p>Register for conferences, workshops, and social gatherings near you</p>
+            <div class="search-box">
+                <input type="text" id="searchEvents" placeholder="Search events...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <h2>Upcoming Events</h2>
+        <div class="events-container" id="eventsContainer">
+            <!-- Events will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="registration-section" id="register">
+        <div class="form-container">
+            <h2>Event Registration</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="eventSelect">Select Event *</label>
+                    <select id="eventSelect" required>
+                        <option value="">Choose an event</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tickets">Number of Tickets *</label>
+                    <input type="number" id="tickets" min="1" max="10" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="terms" required>
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-ticket-alt"></i> Register Now
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- My Registrations -->
+    <section class="tickets-section" id="my-registrations">
+        <h2>My Registrations</h2>
+        <div class="tickets-container" id="ticketsContainer">
+            <!-- Tickets will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 EventHub. All rights reserved.</p>
+            <p>This is a PWA - Works offline!</p>
+            <div class="pwa-badge">
+                <i class="fas fa-wifi-slash"></i>
+                <span>Offline Capable</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/pwa.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+    </script>
+</body>
+</html>
