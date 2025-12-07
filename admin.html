@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - EventHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="admin-logo">
+                <i class="fas fa-cogs"></i>
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="admin-nav">
+                <a href="#dashboard" class="active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="#registrations">
+                    <i class="fas fa-ticket-alt"></i>
+                    Registrations
+                </a>
+                <a href="#events-management">
+                    <i class="fas fa-calendar-alt"></i>
+                    Manage Events
+                </a>
+                <a href="#analytics">
+                    <i class="fas fa-chart-bar"></i>
+                    Analytics
+                </a>
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Site
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <h1>Admin Dashboard</h1>
+                <div class="admin-actions">
+                    <button class="btn-export">
+                        <i class="fas fa-download"></i>
+                        Export Data
+                    </button>
+                    <div class="admin-user">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Administrator</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard -->
+            <section id="dashboard" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #4f46e5;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalRegistrations">0</h3>
+                            <p>Total Registrations</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #10b981;">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="activeEvents">0</h3>
+                            <p>Active Events</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f59e0b;">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalRevenue">$0</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #ef4444;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="attendanceRate">0%</h3>
+                            <p>Attendance Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Registrations -->
+                <div class="recent-registrations">
+                    <h2>Recent Registrations</h2>
+                    <div class="table-container">
+                        <table id="registrationsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Event</th>
+                                    <th>Tickets</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Management -->
+            <section id="events-management" class="events-management-section">
+                <h2>Manage Events</h2>
+                <div class="add-event-form">
+                    <h3>Add New Event</h3>
+                    <form id="addEventForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Event Title</label>
+                                <input type="text" id="newEventTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" id="newEventDate" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" id="newEventLocation" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Price ($)</label>
+                                <input type="number" id="newEventPrice" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea id="newEventDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Capacity</label>
+                                <input type="number" id="newEventCapacity" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Image URL</label>
+                                <input type="url" id="newEventImage" placeholder="https://example.com/image.jpg">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-add-event">
+                            <i class="fas fa-plus"></i> Add Event
+                        </button>
+                    </form>
+                </div>
+
+                <div class="events-list">
+                    <h3>Existing Events</h3>
+                    <div id="adminEventsContainer">
+                        <!-- Events will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
